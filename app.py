@@ -155,7 +155,7 @@ st.sidebar.markdown(
     - Translate extracted/generated content to another language
     """
 )
-st.sidebar.image("C:\ImagetoText\its an image to text generator which inamed as image whisperer.jpg", use_container_width=True)
+st.sidebar.image("C:\ImagetoText\img.jpg", use_container_width=True)
 
 # Main layout
 st.title("🖼️ Image Whisperer📝")
