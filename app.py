@@ -155,7 +155,20 @@ st.sidebar.markdown(
     - Translate extracted/generated content to another language
     """
 )
-st.sidebar.image("img.jpg", use_container_width=True)
+
+import streamlit as st
+
+# File uploader for dynamic uploads
+uploaded_file = st.sidebar.file_uploader("Upload an image", type=["jpg", "png"])
+
+if uploaded_file is not None:
+    # Display the uploaded image
+    st.sidebar.image(uploaded_file, use_container_width=True)
+else:
+    # Display a predefined image if no file is uploaded
+    predefined_image_path = "img.jpg"  # Ensure this image is in the same directory
+    st.sidebar.image(predefined_image_path, use_container_width=True)
+
 
 # Main layout
 st.title("🖼️ Image Whisperer📝")
