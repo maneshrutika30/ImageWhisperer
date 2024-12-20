@@ -159,7 +159,7 @@ st.sidebar.markdown(
 )
 
 
-st.sidebar.image("C:\ImagetoText\img.jpg", use_container_width=True)
+st.sidebar.image("img.jpg", use_container_width=True)
 
 
 
