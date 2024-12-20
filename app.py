@@ -11,8 +11,10 @@ os.environ["GOOGLE_API_KEY"] = "AIzaSyCwgFhc2NXxnykxGVkzbn8W2y9KkK_M_XM"
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 # Configure pytesseract
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
+if os.name == 'nt':  # Windows
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+else:  # Linux (Streamlit Cloud)
+    pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
 # Define the Gemini model
 model = genai.GenerativeModel("models/gemini-1.5-flash-latest")
 
@@ -156,18 +158,9 @@ st.sidebar.markdown(
     """
 )
 
-import streamlit as st
 
-# File uploader for dynamic uploads
-uploaded_file = st.sidebar.file_uploader("Upload an image", type=["jpg", "png"])
+st.sidebar.image("C:\ImagetoText\img.jpg", use_container_width=True)
 
-if uploaded_file is not None:
-    # Display the uploaded image
-    st.sidebar.image(uploaded_file, use_container_width=True)
-else:
-    # Display a predefined image if no file is uploaded
-    predefined_image_path = "img.jpg"  # Ensure this image is in the same directory
-    st.sidebar.image(predefined_image_path, use_container_width=True)
 
 
 # Main layout
